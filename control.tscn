@@ -1,0 +1,78 @@
+[gd_scene load_steps=3 format=3 uid="uid://kmnowcvn5116"]
+
+[ext_resource type="Script" path="res://Client.gd" id="1_anqob"]
+[ext_resource type="Script" path="res://Server.gd" id="2_cyox2"]
+
+[node name="Control" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Client" type="Node" parent="."]
+script = ExtResource("1_anqob")
+
+[node name="LineEdit" type="LineEdit" parent="Client"]
+offset_left = 201.0
+offset_top = 137.0
+offset_right = 536.0
+offset_bottom = 168.0
+
+[node name="Server" type="Node" parent="."]
+script = ExtResource("2_cyox2")
+
+[node name="Start Client" type="Button" parent="."]
+layout_mode = 0
+offset_left = 31.0
+offset_top = 24.0
+offset_right = 126.0
+offset_bottom = 55.0
+text = "Start Client"
+
+[node name="Start Server" type="Button" parent="."]
+layout_mode = 0
+offset_left = 1037.0
+offset_top = 23.0
+offset_right = 1137.0
+offset_bottom = 54.0
+text = "Start Server"
+
+[node name="Button" type="Button" parent="."]
+layout_mode = 0
+offset_left = 34.0
+offset_top = 76.0
+offset_right = 173.0
+offset_bottom = 107.0
+text = "Send Test Packet"
+
+[node name="Button2" type="Button" parent="."]
+layout_mode = 0
+offset_left = 1041.0
+offset_top = 81.0
+offset_right = 1139.0
+offset_bottom = 113.0
+
+[node name="JoinLobby" type="Button" parent="."]
+layout_mode = 0
+offset_left = 33.0
+offset_top = 133.0
+offset_right = 172.0
+offset_bottom = 164.0
+text = "Join Lobby"
+
+[node name="Button3" type="Button" parent="."]
+layout_mode = 0
+offset_left = 34.0
+offset_top = 76.0
+offset_right = 173.0
+offset_bottom = 107.0
+text = "Send Test Packet"
+
+[connection signal="button_down" from="Start Client" to="Client" method="_on_start_client_button_down"]
+[connection signal="button_down" from="Start Server" to="Server" method="_on_start_server_button_down"]
+[connection signal="button_down" from="Button" to="Client" method="_on_button_button_down"]
+[connection signal="button_down" from="Button2" to="Server" method="_on_button_2_button_down"]
+[connection signal="button_down" from="JoinLobby" to="Client" method="_on_join_lobby_button_down"]
+[connection signal="button_down" from="Button3" to="Client" method="_on_button_button_down"]

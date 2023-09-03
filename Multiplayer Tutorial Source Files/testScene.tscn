@@ -1,13 +1,13 @@
 [gd_scene load_steps=12 format=3 uid="uid://bt13jko8i5tec"]
 
 [ext_resource type="Texture2D" uid="uid://bh4xilvgu3miq" path="res://icon.svg" id="1_0m6ke"]
-[ext_resource type="Texture2D" uid="uid://chlnt56mtnfqo" path="res://parallax_background_layer_6.png" id="1_07yi8"]
-[ext_resource type="Script" path="res:///Multiplayer Tutorial Source Files/SceneManager.gd" id="1_br64h"]
-[ext_resource type="PackedScene" uid="uid://cwld7ti0ms68j" path="res://player.tscn" id="2_7bveh"]
-[ext_resource type="Texture2D" uid="uid://cg5nd8583ee0n" path="res://building_05.png" id="2_ncww1"]
-[ext_resource type="Texture2D" uid="uid://6r0yoxgn80ir" path="res://main_tileset.png" id="3_0df68"]
-[ext_resource type="Texture2D" uid="uid://b6y0w06xobc7d" path="res://building_04.png" id="3_vfe3b"]
-[ext_resource type="Texture2D" uid="uid://b4vq4xgturgu4" path="res://building_02.png" id="4_ds3ar"]
+[ext_resource type="Texture2D" uid="uid://chlnt56mtnfqo" path="res://Multiplayer Tutorial Source Files/parallax_background_layer_6.png" id="1_07yi8"]
+[ext_resource type="Script" path="res://Multiplayer Tutorial Source Files/SceneManager.gd" id="1_br64h"]
+[ext_resource type="PackedScene" uid="uid://cwld7ti0ms68j" path="res://Multiplayer Tutorial Source Files/player.tscn" id="2_7bveh"]
+[ext_resource type="Texture2D" uid="uid://cg5nd8583ee0n" path="res://Multiplayer Tutorial Source Files/building_05.png" id="2_ncww1"]
+[ext_resource type="Texture2D" uid="uid://6r0yoxgn80ir" path="res://Multiplayer Tutorial Source Files/main_tileset.png" id="3_0df68"]
+[ext_resource type="Texture2D" uid="uid://b6y0w06xobc7d" path="res://Multiplayer Tutorial Source Files/building_04.png" id="3_vfe3b"]
+[ext_resource type="Texture2D" uid="uid://b4vq4xgturgu4" path="res://Multiplayer Tutorial Source Files/building_02.png" id="4_ds3ar"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_bsyir"]
 size = Vector2(785, 120)
@@ -382,8 +382,8 @@ layer_0/tile_data = PackedInt32Array(2293769, 393216, 9, 2293770, 393216, 9, 229
 
 [node name="SpawnLocations" type="Node2D" parent="."]
 
-[node name="0" type="Node2D" parent="SpawnLocations" groups=["PlayerSpawnPoint"]]
+[node name="1" type="Node2D" parent="SpawnLocations" groups=["PlayerSpawnPoint"]]
 position = Vector2(227, 486)
 
-[node name="1" type="Node2D" parent="SpawnLocations" groups=["PlayerSpawnPoint"]]
+[node name="2" type="Node2D" parent="SpawnLocations" groups=["PlayerSpawnPoint"]]
 position = Vector2(769, 486)

@@ -1,0 +1,15 @@
+[gd_scene format=3 uid="uid://c4hw46opuxnp5"]
+
+[node name="LobbyBrowserInfo" type="HBoxContainer"]
+
+[node name="LobbyName" type="Label" parent="."]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="UserCount" type="Label" parent="."]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="Button" type="Button" parent="."]
+layout_mode = 2
+size_flags_horizontal = 3
