@@ -31,6 +31,13 @@ offset_right = 126.0
 offset_bottom = 55.0
 text = "Start Client"
 
+[node name="Create cert" type="Button" parent="."]
+offset_left = 912.0
+offset_top = 23.0
+offset_right = 1012.0
+offset_bottom = 54.0
+text = "Create Cert"
+
 [node name="Start Server" type="Button" parent="."]
 layout_mode = 0
 offset_left = 1037.0
@@ -70,9 +77,26 @@ offset_right = 173.0
 offset_bottom = 107.0
 text = "Send Test Packet"
 
+[node name="Login User" type="Button" parent="."]
+offset_left = 376.0
+offset_top = 20.0
+offset_right = 476.0
+offset_bottom = 51.0
+text = "Create User"
+
+[node name="Create User" type="Button" parent="."]
+offset_left = 232.0
+offset_top = 23.0
+offset_right = 332.0
+offset_bottom = 54.0
+text = "Create User"
+
 [connection signal="button_down" from="Start Client" to="Client" method="_on_start_client_button_down"]
+[connection signal="button_down" from="Create cert" to="Server" method="_on_create_cert_button_down"]
 [connection signal="button_down" from="Start Server" to="Server" method="_on_start_server_button_down"]
 [connection signal="button_down" from="Button" to="Client" method="_on_button_button_down"]
 [connection signal="button_down" from="Button2" to="Server" method="_on_button_2_button_down"]
 [connection signal="button_down" from="JoinLobby" to="Client" method="_on_join_lobby_button_down"]
 [connection signal="button_down" from="Button3" to="Client" method="_on_button_button_down"]
+[connection signal="button_down" from="Login User" to="Client" method="_on_login_user_button_down"]
+[connection signal="button_down" from="Create User" to="Client" method="_on_create_user_button_down"]

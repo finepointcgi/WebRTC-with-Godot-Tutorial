@@ -12,11 +12,19 @@ config_version=5
 
 config/name="WebRTC with Godot Tutorial"
 run/main_scene="res://control.tscn"
-config/features=PackedStringArray("4.1", "Forward Plus")
+config/features=PackedStringArray("4.2", "Forward Plus")
 
 [autoload]
 
 GameManager="*res://Multiplayer Tutorial Source Files/GameManager.gd"
+
+[dotnet]
+
+project/assembly_name="WebRTC with Godot Tutorial"
+
+[editor_plugins]
+
+enabled=PackedStringArray("res://addons/godot-sqlite/plugin.cfg")
 
 [input]
 

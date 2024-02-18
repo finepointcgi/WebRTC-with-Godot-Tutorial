@@ -3,6 +3,8 @@ class_name Lobby
 
 var HostID : int
 var Players : Dictionary = {}
+var openSlots : int = 6
+var timeToLive = 60
 
 func _init(id):
 	HostID = id

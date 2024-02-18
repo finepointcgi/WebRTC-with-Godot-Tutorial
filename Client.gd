@@ -11,7 +11,9 @@ enum Message{
 	answer,
 	checkIn,
 	serverLobbyInfo,
-	removeLobby 
+	removeLobby, 
+	reg,
+	login
 }
 
 var peer = WebSocketMultiplayerPeer.new()
@@ -20,6 +22,10 @@ var rtcPeer : WebRTCMultiplayerPeer = WebRTCMultiplayerPeer.new()
 var hostId :int
 var lobbyValue = ""
 var lobbyInfo = {}
+var rating : int
+var score : int
+var win : int
+var loss : int
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
@@ -36,7 +42,6 @@ func RTCPeerConnected(id):
 	
 func RTCPeerDisconnected(id):
 	print("rtc peer disconnected " + str(id))
-
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
@@ -74,10 +79,15 @@ func _process(delta):
 			if data.message == Message.answer:
 				if rtcPeer.has_peer(data.orgPeer):
 					rtcPeer.get_peer(data.orgPeer).connection.set_remote_description("answer", data.data)
-#			if data.message == Message.serverLobbyInfo:
-#
-#				$LobbyBrowser.InstanceLobbyInfo(data.name,data.userCount)
-	pass
+			
+			if data.message == Message.login:
+				print("success ")
+				print(data)
+				rating = data.rating
+				score = data.score
+				win = data.win
+				loss = data.loss
+			#if data.message == Message.
 
 func connected(id):
 	rtcPeer.create_mesh(id)
@@ -85,7 +95,7 @@ func connected(id):
 
 #web rtc connection
 func createPeer(id):
-	if id != self.id:
+	if id != self.id :
 		var peer : WebRTCPeerConnection = WebRTCPeerConnection.new()
 		peer.initialize({
 			"iceServers" : [{ "urls": ["stun:stun.l.google.com:19302"] }]
@@ -99,7 +109,6 @@ func createPeer(id):
 		if !hostId == self.id:
 			peer.create_offer()
 		pass
-		
 
 func offerCreated(type, data, id):
 	if !rtcPeer.has_peer(id):
@@ -112,7 +121,6 @@ func offerCreated(type, data, id):
 	else:
 		sendAnswer(id, data)
 	pass
-	
 	
 func sendOffer(id, data):
 	var message = {
@@ -150,14 +158,14 @@ func iceCandidateCreated(midName, indexName, sdpName, id):
 	pass
 
 func connectToServer(ip):
-	peer.create_client("ws://204.48.28.159:8915")
+	var client_trusted_cas = load("res://my_server_cas.crt")
+	var client_tls_options = TLSOptions.client_unsafe(client_trusted_cas)
+	peer.create_client("wss://127.0.0.1:8915", client_tls_options)
 	print("started client")
-
 
 func _on_start_client_button_down():
 	connectToServer("")
 	pass # Replace with function body.
-
 
 func _on_button_button_down():
 	StartGame.rpc()
@@ -179,6 +187,25 @@ func _on_join_lobby_button_down():
 		"message" : Message.lobby,
 		"name" : "",
 		"lobbyValue" : $LineEdit.text
+	}
+	peer.put_packet(JSON.stringify(message).to_utf8_buffer())
+	pass # Replace with function body.
+
+func _on_create_user_button_down():
+	var message ={
+		"userid" : "test",
+		"message" : Message.reg,
+		"password" : "test",
+	}
+	peer.put_packet(JSON.stringify(message).to_utf8_buffer())
+	pass # Replace with function body.
+
+func _on_login_user_button_down():
+	var message = {
+		"userid" : "test",
+		"peerID" : id,
+		"message" : Message.login,
+		"password" : "test",
 	}
 	peer.put_packet(JSON.stringify(message).to_utf8_buffer())
 	pass # Replace with function body.
